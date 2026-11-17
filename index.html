@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sylva Family : un blog consacré aux expériences en forêt, à l’orientation et à la découverte du vivant en famille dans le Limousin.">
+    <title>Le blog des explorateurs du vivant - Sylva Family</title>
+    <!--Intégration police depuis serveur Google-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!--Intégration du CSS utile à notre effet lightbox sur les images des articles-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+    <header class="en-tete-du-site">
+        <div class="identite-site">
+            <p>
+                <a class="titre-du-site" href="index.html">Sylva Family</a>
+            </p>
+            <p class="sous-titre-du-site">Explorer, apprendre et se débrouiller en forêt</p>
+        </div>
+        <nav aria-label="Navigation principale">
+            <ul class="navigation-principale">
+                <li>
+                    <a href="index.html" aria-current="page">Accueil</a>
+                </li>
+                <li>
+                    <a href="about.html">À propos</a>
+                </li>
+                <li>
+                    <a href="login.html">Connexion</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- mode sombre et menu burger -->
+        <div class="boutons-header">
+            <button
+                type="button"
+                id="boutonTheme"
+                aria-label="Activer ou désactiver le mode sombre"
+                aria-pressed="false">
+                🌙
+            </button>
+            <button
+                type="button"
+                id="boutonBurger"
+                aria-label="Ouvrir ou fermer le menu">
+                ☰
+            </button>
+        </div>
+    </header>
+    <div class="banniere-sortie" role="status">
+        <p>Dernières places pour notre sortie boussole du samedi !
+            <a href="index.html#article2">Découvrir l’activité</a>
+        </p>
+        <button class="fermer-banniere" type="button" aria-label="Fermer l’annonce">×</button>
+    </div>
+    <main class="conteneur">
+        <section class="introduction" aria-labelledby="titre-introduction">
+            <div class="texte-introduction">
+                <h1 id="titre-introduction">
+                    Le blog des explorateurs du vivant
+                </h1>
+                <p>
+                    Bienvenue sur Sylva Family, un blog consacré aux découvertes en forêt dans le Limousin. Vous y trouverez des idées de sorties, des conseils d’orientation et des activités pour apprendre à observer et à respecter la nature en famille.
+                </p>
+            </div>
+            <img src="img/balade-foret.webp" alt="Une famille observe les arbres dans une forêt">
+        </section>
+        <!--Thème 1-->
+        <section class="articles theme-balades" aria-labelledby="titre-articles">
+            <h2 id="titre-articles" class="titre-section">Balades et orientation</h2>
+            <!--Article 1-->
+            <article class="carte-article" id="article1">
+                <!--l'attribut data-lightbox="article1" permet "d'activer" notre effet lightbox d'une bibliothèque jquery distincte-->
+                <a href="img/foret-famille.webp" data-lightbox="article1" data-title="Une famille se promène dans la forêt">
+                    <img src="img/foret-famille.webp" alt="Une famille se promène dans la forêt">
+                </a>
+                <div class="contenu-article">
+                    <p class="date-article">
+                        <time datetime="2026-09-27">27 septembre 2026</time>
+                    </p>
+                    <h3>Une première balade en forêt en famille</h3>
+                    <p>
+                        Une sortie en forêt ne nécessite pas de matériel compliqué. Une tenue adaptée, une bouteille d’eau, un carnet et une grande curiosité suffisent pour commencer à observer les arbres, les feuilles et les petits habitants des sous-bois.
+                    </p>
+                    <p>
+                        Pour rendre la promenade plus vivante, notre botaniste est là pour expliquer la forêt et répondre aux questions des petits et des grands. L’objectif n’est pas d’aller vite, mais de prendre le temps de regarder.
+                    </p>
+                </div>
+                <!--Champ commentaire-->
+                <form class="commentaire-articles" action="index.html" method="get"><!-- action renvoie à la page index.html + get qui recharge le bouton sur index.html-->
+                    <label for="commentaire-1">Commentaire(s)</label>
+                    <textarea id="commentaire-1" name="commentaire" placeholder="Partage ton expérience" rows="3" required></textarea>
+                    <button type="submit">Publier</button>
+                </form>
+            </article>
+            <!--Article 2-->
+            <article class="carte-article" id="article2">
+                <a href="img/boussole-orientation.webp" data-lightbox="article2" data-title="Une main d’enfant tient une boussole au-dessus d’une carte de randonnée">
+                    <img src="img/boussole-orientation.webp" alt="Une main d’enfant tient une boussole au-dessus d’une carte de randonnée">
+                </a>
+                <div class="contenu-article">
+                    <p class="date-article">
+                        <time datetime="2026-09-20">20 septembre 2026</time>
+                    </p>
+                    <h3>Apprendre à s’orienter avec une boussole</h3>
+                    <p>
+                        La boussole transforme une promenade en véritable exploration. À l’aide de notre animateur, les enfants peuvent apprendre à reconnaître les points cardinaux, suivre une direction simple et comparer la carte avec ce qu’ils voient réellement sur le terrain.
+                    </p>
+                    <p>
+                        Nous commençons par un petit parcours avec quelques étapes faciles. Chaque membre de la famille peut participer : l’un tient la carte, l’autre observe la direction et un troisième cherche le prochain repère.
+                    </p>
+                    <p>
+                        Prochaine sortie boussole en famille : samedi prochain, départ à 9h de Limoges. Il ne reste que quelques places, pensez à réserver !
+                    </p>
+                    <p class="intro-carte">Retrouvez ci-dessous le point de départ de nos balades : il ne vous reste plus qu’à préparer votre boussole !</p>
+                    <iframe class="carte-iframe"
+                        src="https://www.openstreetmap.org/export/embed?bbox=1.1336517333984377%2C45.92536382097964%2C1.524009704589844%2C46.09894765817489&amp;layer=mapnik&amp;marker=46.01222384063238%2C1.3288307189941406"
+                        title="Carte du point de départ de nos balades en forêt"
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <form class="commentaire-articles" action="index.html" method="get"> 
+                    <label for="commentaire-2">Commentaire(s)</label>
+                    <textarea id="commentaire-2" name="commentaire" placeholder="Partage ton expérience" rows="3" required></textarea>
+                    <button type="submit">Publier</button>
+                </form>
+            </article>
+        </section>
+         <!--Thème 2-->
+        <section class="articles theme-faune" aria-labelledby="titre-faune">
+            <h2 id="titre-faune" class="titre-section">Faune sauvage</h2>
+            <!--Article 3-->
+            <article class="carte-article" id="article3">
+                <a href="img/traces-animaux.webp" data-lightbox="article3" data-title="Des empreintes d’animaux sont visibles dans la terre humide">
+                    <img src="img/traces-animaux.webp" alt="Des empreintes d’animaux sont visibles dans la terre humide">
+                </a>
+                <div class="contenu-article">
+                    <p class="date-article">
+                        <time datetime="2026-09-13">13 septembre 2026</time>
+                    </p>
+                    <h3>Sur la piste des animaux sauvages</h3>
+                    <p>
+                        Les animaux ne se montrent pas toujours, mais ils laissent de nombreux indices : empreintes, plumes, poils, noisettes grignotées, chemins dans les herbes ou branches frottées contre un arbre.
+                    </p>
+                    <p>
+                        Observer ces traces permet d’apprendre à se déplacer discrètement et à respecter la distance nécessaire avec la faune sauvage. Notre pisteur explique aux enfants et aux adultes comment repérer ces traces. Une paire de jumelles et un carnet d’observation peuvent rendre l’activité encore plus passionnante.
+                    </p>
+                </div>
+                <form class="commentaire-articles" action="index.html" method="get"> 
+                    <label for="commentaire-3">Commentaire(s)</label>
+                    <textarea id="commentaire-3" name="commentaire" placeholder="Partage ton expérience" rows="3" required></textarea>
+                    <button type="submit">Publier</button>
+                </form>
+            </article>
+        </section>
+        <!--Thème 3-->
+        <section class="articles theme-connaitre" aria-labelledby="titre-connaitre">
+            <h2 id="titre-connaitre" class="titre-section">Connaître et construire</h2>
+             <!--Article 4-->
+            <article class="carte-article" id="article4">
+                <a href="img/plantes-foret.webp" data-lightbox="article4" data-title="Une enfant observe une feuille avec une loupe en forêt">
+                    <img src="img/plantes-foret.webp" alt="Une enfant observe une feuille avec une loupe en forêt">
+                </a>
+                <div class="contenu-article">
+                    <p class="date-article">
+                        <time datetime="2026-09-06">6 septembre 2026</time>
+                    </p>
+                    <h3>Reconnaître les arbres et les plantes</h3>
+                    <p>
+                        La forêt offre un formidable terrain d’apprentissage. La forme des feuilles, l’écorce, les fruits et l’environnement proche permettent de commencer à identifier quelques espèces communes du Limousin. Notre botaniste aide les enfants à constituer un herbier.
+                    </p>
+                    <p>
+                        Il est important de ne jamais consommer une plante trouvée au hasard. Une identification doit être confirmée par une personne compétente, et l’observation doit toujours se faire dans le respect des espèces et des règles du lieu.
+                    </p>
+                </div>
+                <form class="commentaire-articles" action="index.html" method="get"> 
+                    <label for="commentaire-4">Commentaire(s)</label>
+                    <textarea id="commentaire-4" name="commentaire" placeholder="Partage ton expérience" rows="3" required></textarea>
+                    <button type="submit">Publier</button>
+                </form>
+            </article>
+            <!--Article 5-->
+            <article class="carte-article" id="article5">
+                <a href="img/abri-foret.webp" data-lightbox="article5" data-title="Un petit abri construit avec des branches par des enfants">
+                    <img src="img/abri-foret.webp" alt="Un petit abri construit avec des branches par des enfants">
+                </a>
+                <div class="contenu-article">
+                    <p class="date-article">
+                        <time datetime="2026-08-30">30 août 2026</time>
+                    </p>
+                    <h3>Construire un abri : apprendre en coopérant</h3>
+                    <p>
+                        Construire un abri temporaire permet aux enfants de découvrir les principes d’une structure stable et de réfléchir à l’utilisation raisonnée des matériaux disponibles. Cette activité développe l’observation, l’organisation et la coopération.
+                    </p>
+                    <p>
+                        L’exercice est réalisé avec l’un de nos accompagnateurs et dans un espace autorisé. Il ne faut pas couper d’arbres vivants ni dégrader le milieu naturel. L’abri est ensuite démonté afin de laisser la forêt dans son état initial.
+                    </p>
+                    <table class="tableau-materiel">
+                        <caption>Le matériel pour construire un abri</caption>
+                        <thead>
+                            <tr>
+                                <th>Matériel</th>
+                                <th>Utilisation</th>
+                                <th>Conseil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Branches mortes</td>
+                                <td>Former la structure de l’abri</td>
+                                <td>Les ramasser au sol, ne jamais en couper sur un arbre vivant</td>
+                            </tr>
+                            <tr>
+                                <td>Ficelle naturelle</td>
+                                <td>Attacher les branches entre elles</td>
+                                <td>Choisir du chanvre ou du jute, et la récupérer à la fin</td>
+                            </tr>
+                            <tr>
+                                <td>Gants de jardinage</td>
+                                <td>Protéger les mains des échardes</td>
+                                <td>Prévoir une paire par enfant</td>
+                            </tr>
+                            <tr>
+                                <td>Feuilles mortes et fougères sèches</td>
+                                <td>Couvrir l’abri et le rendre plus étanche</td>
+                                <td>Les prélever au sol, sans arracher de plantes</td>
+                            </tr>
+                            <tr>
+                                <td>Mètre ou ficelle de mesure</td>
+                                <td>Comparer la taille des branches</td>
+                                <td>Un bâton peut servir d’unité de mesure</td>
+                            </tr>
+                            <tr>
+                                <td>Ciseaux à bouts ronds</td>
+                                <td>Couper la ficelle à la bonne longueur</td>
+                                <td>Réservés à la ficelle, jamais aux végétaux</td>
+                            </tr>
+                            <tr>
+                                <td>Trousse de premiers secours</td>
+                                <td>Soigner une écharde ou une petite égratignure</td>
+                                <td>Vérifier son contenu avant chaque sortie</td>
+                            </tr>
+                            <tr>
+                                <td>Sifflet</td>
+                                <td>Rassembler le groupe ou donner l’alerte</td>
+                                <td>Convenir d’un signal simple avec les enfants</td>
+                            </tr>
+                            <tr>
+                                <td>Carnet et crayon</td>
+                                <td>Dessiner le plan de l’abri avant de construire</td>
+                                <td>Noter aussi les étapes réussies et les difficultés</td>
+                            </tr>
+                            <tr>
+                                <td>Sac pour les déchets</td>
+                                <td>Laisser le lieu propre en repartant</td>
+                                <td>Ramasser aussi les déchets trouvés sur place</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form class="commentaire-articles" action="index.html" method="get"> 
+                    <label for="commentaire-5">Commentaire(s)</label>
+                    <textarea id="commentaire-5" name="commentaire" placeholder="Partage ton expérience" rows="3" required></textarea>
+                    <button type="submit">Publier</button>
+                </form>
+            </article>
+        </section>
+    </main>
+    <section class="newsletter">
+        <h2>Restons en contact !</h2>
+        <p>Reçois nos nouveaux articles et nos dernières idées de sorties en forêt par e-mail.</p>
+        <form class="formulaire-newsletter" action="#" method="POST">
+            <input type="email" name="email" placeholder="Ton adresse e-mail" aria-label="Adresse e-mail" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+    </section>
+    <footer>
+        <p class="nom-site-footer">Sylva Family</p>
+        <div class="colonnes-footer">
+            <div class="colonne-footer">
+                <h3>Derniers articles</h3>
+                <ul>
+                    <li>
+                        <a href="index.html#article1">Une première balade en forêt en famille</a>
+                    </li>
+                    <li>
+                        <a href="index.html#article2">Apprendre à s'orienter avec une boussole</a>
+                    </li>
+                    <li>
+                        <a href="index.html#article3">Sur la piste des animaux sauvages</a>
+                    </li>
+                    <li>
+                        <a href="index.html#article4">Reconnaître les arbres et les plantes</a>
+                    </li>
+                    <li>
+                        <a href="index.html#article5">Construire un abri : apprendre en coopérant</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne-footer">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li>
+                        <a href="index.html">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="about.html">À propos</a>
+                    </li>
+                    <li>
+                        <a href="login.html">Connexion</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne-footer">
+                <h3>Nos réseaux sociaux</h3>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com" target="_blank">
+                            <img class="logo-social" src="img/instagram.svg" alt="Logo Instagram">
+                            Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com" target="_blank">
+                            <img class="logo-social" src="img/facebook.svg" alt="Logo Facebook">
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youtube.com" target="_blank">
+                            <img class="logo-social" src="img/youtube.svg" alt="Logo YouTube">
+                            YouTube
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright-footer">
+            © 2026 - UE L201 Semaine 4 - Site réalisé par Violaine, Rachel et Julian. Tous droits réservés.
+        </p>
+    </footer>
+    <!-- Chargement des scripts et des bibliothèques -->
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+/* font Logo */
+
+@font-face {
+    font-family: 'LoveNature';
+    src: url("../font/love_nature/Love\ Nature.ttf") format("truetype");
+    font-style: normal;
+}
+
+/* mettre à zéro les conteneurs */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body */
+
+body {
+    background-color: #F0FFF1;
+    font-family: "Raleway", Arial, sans-serif;
+    text-align: justify;
+}
+
+/* Header */
+
+body > header {
+    background-color: #4a3725;
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* le menu ouvert passe sur sa propre ligne */
+    position: relative;
+    z-index: 1; /* permet au header d'être bien au dessus de la page blanche et de corriger le bug de l'ombre */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Menu burger : la navigation est cachée au départ, jQuery l'ouvre au clic */
+body > header nav {
+    display: none; /* menu caché au chargement de la page */
+    width: 100%; /* le menu ouvert prend toute la largeur du header */
+    order: 1; /* le menu passe après les boutons : ils restent en haut à droite */
+}
+
+body > header ul {
+    display: flex;
+    flex-direction: column; /* les liens les uns sous les autres */
+    gap: 15px;
+    list-style-type: none; /* enlève le style "liste à puce" */
+    padding: 15px 0; /* un peu d'air au-dessus et en dessous des liens */
+}
+
+.titre-du-site {
+    font-family: 'LoveNature', system-ui; /* Font du "logo" du site */
+    font-size: 28px;
+}
+
+body > header a {
+    color: white;
+    text-decoration: none; /* enlève le style par défaut des liens */
+}
+
+/* Main */
+
+/* Accueil : pas de bloc blanc, on laisse le fond vert du body apparaître */
+.conteneur {
+    background-color: transparent;
+}
+
+/* Bannière d'annonce */
+.banniere-sortie {
+    display: none; /* cachée au départ : jQuery la fait apparaître */
+    position: relative;
+    background-color: #E8FCCF;
+    color: #0D2818;
+    text-align: center;
+    padding: 0.75rem 3rem;
+    font-weight: 600;
+}
+
+.banniere-sortie a {
+    color: #0D2818;
+    margin-left: 0.5rem;
+}
+
+.fermer-banniere {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%); /* centre la croix verticalement */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #0D2818;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1000px; /*contenu de la page ne dépassera pas 1000 px de large*/
+    margin: 0 auto; /*pas de marge en haut ni en bas ; marges gauches et droites se partagent l'espace restant donc centre bloc*/
+    padding: 50px 20px;  /*ajout un peu de marges intérieures */
+    background-color: white;
+}
+
+/* Hero : le texte d'introduction à gauche, une image à droite */
+.introduction {
+    display: flex;
+    align-items: center; /* texte et image centrés verticalement */
+    flex-wrap: wrap; /* sur petit écran, l'image passe sous le texte */
+    gap: 40px;
+    margin-bottom: 3rem; /* espace avant la grille d'articles */
+}
+
+h1{
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.texte-introduction {
+    flex: 1; /* le texte prend l'espace restant */
+    min-width: 250px; /* évite une colonne de texte trop étroite */
+}
+
+.introduction img {
+    width: 40%; /* l'image prend un peu moins de la moitié de la largeur */
+    height: 200px; /* hauteur fixe, quelle que soit la forme de l'image */
+    min-width: 250px;
+    border-radius: 12px; /* mêmes coins arrondis que les cartes articles */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+}
+
+#titre-introduction {
+    color:#0D2818;
+    font-style: normal;
+    font-weight: 900;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 44px;
+}
+
+.introduction p {
+    text-align: left;
+    line-height: 1.6;
+    text-wrap: balance;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Articles */
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* espace sous le titre et entre les cartes */
+    margin-bottom: 3rem; /* espace entre deux sections */
+}
+
+.titre-section {
+    color:#0D2818;
+    margin: 1.5rem 0;
+    width: 100%; /*Titre s'étire comme attendu*/
+}
+
+/* Carte OpenStreetMap */
+
+.intro-carte {
+    margin-top: 1.5rem; /* espace entre le texte de l'article et la phrase */
+    margin-bottom: 1rem; /* espace entre la phrase et la carte */
+}
+
+.carte-iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px; /* mêmes coins arrondis que les cartes articles */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* même ombre que les cartes */
+}
+
+.carte-article {
+    background-color: #E8FCCF;
+    border-radius: 12px;
+    overflow: hidden; /*Dépassement du coin de l'image est masqué*/
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    flex-grow: 1;      /* la carte s'étire pour remplir sa ligne */
+    flex-basis: 100%; /* couverture de toute la largeur de la page */
+}
+
+.carte-article img {
+    display: block;
+    width: 100%;
+    height: 25rem; /* plus de hauteur pour voir davantage l'image */
+    object-fit: cover; /* recadrée sans déformation */
+    object-position: center 30%; /* cadrage un peu au-dessus du centre, pour garder les visages */
+    border-radius: 12px; /* images arrondies comme les articles */
+}
+
+.contenu-article {
+    padding: 1.5rem;
+}
+
+.date-article {
+    font-style: italic;
+    font-weight: 200;
+    margin-bottom: 0.5rem;
+}
+
+.contenu-article h3 {
+    color:#0D2818;
+    margin-bottom: 0.75rem;
+}
+
+.contenu-article p {
+    line-height: 1.6;
+}
+
+.theme-balades .carte-article {
+    background-color: #E8FCCF;
+}
+
+.theme-faune .carte-article {
+    background-color: #F7F0C8;
+}
+
+.theme-connaitre .carte-article {
+    background-color: #C9E4C5;
+}
+
+/* Tableau du matériel (article 5) */
+.tableau-materiel {
+    width: 100%;
+    border-collapse: collapse; /* fusion des bordures du tableau */
+    margin-top: 1rem;
+    background-color: #e1f8dc;
+}
+
+.tableau-materiel caption {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tableau-materiel th,
+.tableau-materiel td {
+    padding: 0.5rem;
+    border: 1px solid #b5cc9a;
+    text-align: left;
+}
+
+.tableau-materiel th {
+    background-color: #0D2818;
+    color: #ffffff;
+}
+
+/* Champ commentaire sous les articles */
+
+/* champ + le bouton, côte à côte */
+.commentaire-articles {
+    display: flex;
+    flex-wrap: wrap; /* champ + bouton passent à la ligne */
+    align-items: flex-end; /* aligne le bouton en bas du champ */
+    gap: 0.5rem 0.75rem; /* 0.5 entre label et champ + 0.75 entre champ et bouton */
+    padding: 0 1.5rem 1.5rem; /* O en haut + 1.5 gauche et droite + 1.5 en bas */
+}
+
+.commentaire-articles label {
+    flex-basis: 100%; /* label occupe toute la largeur, les autres éléments passent donc en dessous */
+    font-weight: 500;
+}
+
+.commentaire-articles textarea {
+    flex: 1; /* textarea occupe tout l'espace restant à côté du bouton */
+    padding: 0.75rem; /* 0.75 sur les 4 côtés */
+    font: inherit;
+    border: 1px solid #b5cc9a;
+    border-radius: 8px; /* mêmes coins arrondis que le bouton de connexion */
+    background-color: #ffffff;
+    resize: vertical;
+}
+
+.commentaire-articles button {
+    padding: 0.6em 1.2em; /* 0.6 haut et bas + 1.2 gauche et droite */
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #0D2818;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Connexion */
+
+.connexion {
+    max-width: 400px;        /* une colonne étroite */
+    margin: 40px auto;       /* centrée, avec de l'air au-dessus */
+    padding: 80px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.page-connexion {
+    background-color: transparent; /* pas de bloc blanc, on laisse le vert du body apparaître */
+}
+
+.connexion input:not([type="checkbox"]) {
+    display: block;          /* chaque champ passe sous son label */
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+}
+
+.connexion input[type="checkbox"] {
+    margin-right: 8px;   /* petit espace entre la case et le texte */
+    margin-bottom: 15px; /* même espace sous elle que les autres champs */
+}
+
+.connexion button {
+    width: 100%;
+    padding: 10px;
+    background-color: #E8FCCF; /* le vert clair des cartes articles */
+    color: black;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Page articles (A propos) */
+
+.page-article {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.page-article h1,
+.page-article h2 {
+    margin: 2rem 0 0.75rem;  /* 32px au-dessus, 12px en dessous */
+    color: #0D2818;
+}
+
+.page-article p {
+    margin-bottom: 1rem;     /* espace entre les paragraphes */
+    line-height: 1.6;
+}
+
+/* Newsletter */
+
+.newsletter {
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3); /* ombre au dessus */
+    background-color: #4a3725; /* même marron que le header */
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.newsletter h2 {
+    margin-bottom: 10px; /* espace sous le titre */
+}
+
+.newsletter p {
+    margin-bottom: 20px; /* espace sous la phrase d'accroche */
+}
+
+/* Le champ + le bouton, côte à côte et centrés */
+.formulaire-newsletter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* sur petit écran, le bouton passe sous le champ */
+}
+
+.formulaire-newsletter input {
+    width: 280px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px; /* mêmes coins arrondis que le bouton de connexion */
+}
+
+.formulaire-newsletter button {
+    padding: 10px 20px;
+    background-color: #F0FFF1;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer; /* curseur "main" au survol du bouton */
+}
+
+/* Footer */
+
+footer {
+    background-color: #2e2e2e;
+    color: white;
+    text-align: center;  /* le nom du site et le copyright centrés */
+    padding: 30px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none; /* enleve le soulignement par defaut des liens */
+}
+
+.nom-site-footer {
+    font-family: 'LoveNature', system-ui;
+    font-size: 32px;
+    margin-bottom: 30px; /* espace entre le nom et les colonnes */
+}
+
+.colonnes-footer {
+    max-width: 1000px;
+    margin: 0 auto; /* centre le bloc de colonnes dans le footer */
+    display: flex; /* met les colonnes à l'horizontal */
+    justify-content: space-between; /* répartit l'espace vide entre les colonnes */
+    gap: 40px;
+    flex-wrap: wrap; /* sur petit écran les colonnes passent à la ligne */
+}
+
+.colonne-footer {
+    text-align: left;
+}
+
+.colonne-footer ul {
+    list-style-type: none; /* enlève les puces */
+}
+
+.colonne-footer li {
+    margin-bottom: 8px; /* espace entre les liens */
+}
+
+.colonne-footer h3 {
+    margin-bottom: 15px;
+    color: #F0FFF1;
+}
+
+.logo-social {
+    width: 16px;
+    margin-right: 8px;
+    vertical-align: middle; /* aligne l'icône avec le texte */
+}
+
+.copyright-footer {
+    margin-top: 30px;
+}
+
+/* Boutons ronds du header : mode sombre et menu burger */
+
+.boutons-header {
+    display: flex;
+    gap: 10px; /* espace entre les deux boutons */
+}
+
+#boutonTheme,
+#boutonBurger {
+    background-color: #F0FFF1;
+    color: #0D2818;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#boutonTheme:hover,
+#boutonBurger:hover {
+    background-color: #E8FCCF;
+}
+
+/* Mode sombre : verts très foncés et texte clair */
+
+body.mode-sombre {
+    background-color: #081C10;
+    color: #F5F5F5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.mode-sombre main {
+    background-color: #0D2818;
+}
+
+body.mode-sombre .carte-article {
+    color: #F5F5F5;
+}
+
+/* Chaque thème garde sa couleur en mode sombre, en version foncée */
+body.mode-sombre .theme-balades .carte-article {
+    background-color: #223A27;
+}
+
+body.mode-sombre .theme-faune .carte-article {
+    background-color: #3B3320;
+}
+
+body.mode-sombre .theme-connaitre .carte-article {
+    background-color: #2C4031;
+}
+
+body.mode-sombre .tableau-materiel {
+    background-color: #223A27;
+}
+
+body.mode-sombre .titre-section,
+body.mode-sombre #titre-introduction,
+body.mode-sombre .contenu-article h3,
+body.mode-sombre .page-article h1,
+body.mode-sombre .page-article h2 {
+    color: #F5F5F5;
+}
+
+/* Zone de commentaire plus sombre que la carte, pour bien la distinguer */
+body.mode-sombre .commentaire-articles textarea {
+    background-color: #0A1F12;
+    color: #F5F5F5;
+    border-color: #556B4F;
+}
+
+/* Le texte d'exemple du champ reste lisible sur le fond très sombre */
+body.mode-sombre .commentaire-articles textarea::placeholder {
+    color: #A9C4AE;
+}
+
+body.mode-sombre .commentaire-articles button {
+    background-color: #F0FFF1;
+    color: #0D2818;
+}
+
+
+/* Page connexion : texte qui reste sombre en mode sombre car le fond de la connexion reste en blanc */
+
+body.mode-sombre .page-connexion,
+body.mode-sombre .page-connexion h1,
+body.mode-sombre .page-connexion h2,
+body.mode-sombre .page-connexion p,
+body.mode-sombre .page-connexion label {
+    color: #0D2818;
+}
+
+body.mode-sombre .connexion {
+    background-color: #ffffff;
+    color: #0D2818;
+}
+
+body.mode-sombre .connexion input:not([type="checkbox"]) {
+    background-color: #ffffff;
+    color: #0D2818;
+    border-color: #b5cc9a;
+}
+
+body.mode-sombre .connexion input[type="checkbox"] + label {
+    color: #0D2818;
+}
+
+body.mode-sombre .connexion button {
+    background-color: #E8FCCF;
+    color: #000000;
+}
+
+/* Version mobile : articles collés les uns aux autres, sans formulaires */
+@media (max-width: 768px) {
+    .articles {
+        gap: 0; /* les articles se touchent */
+        margin-bottom: 0; /* les sections se suivent sans espace */
+    }
+
+    .carte-article {
+        border-bottom: 1px solid #0D2818; /* fine séparation entre les articles */
+    }
+
+    .carte-article img {
+        height: auto; /* image entière, sans recadrage, sur petit écran */
+    }
+
+    .introduction img {
+        display: none; /* l'image du héro est masquée sur mobile */
+    }
+
+    .titre-section,
+    .commentaire-articles {
+        display: none; /* titres de rubrique et formulaires de commentaires masqués sur mobile */
+    }
+
+    .carte-iframe {
+        max-width: 100%; /* la carte ne déborde pas */
+    }
+
+    .sous-titre-du-site {
+        font-size: 0.8rem; /* le sous-titre rétrécit pour laisser la place aux boutons */
+    }
+
+    .boutons-header {
+        flex-direction: column; /* les boutons l'un au-dessus de l'autre sur mobile */
+    }
+}
