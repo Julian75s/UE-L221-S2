@@ -54,9 +54,47 @@ body > header ul {
     padding: 15px 0; /* un peu d'air au-dessus et en dessous des liens */
 }
 
+/* CSS 3D - Animation du titre Sylva Family */
+
+/* Perspective pour créer un effet de profondeur */
+.identite-site {
+    perspective: 650px;
+}
+
+/* Apparence initiale du titre */
 .titre-du-site {
-    font-family: 'LoveNature', system-ui; /* Font du "logo" du site */
+    font-family: 'LoveNature', system-ui;
     font-size: 28px;
+    display: inline-block; /* permet la transformation 3d */
+
+    /* Point de rotation au centre du texte */
+    transform-origin: center;
+    transition: transform 0.6s ease,
+                text-shadow 0.6s ease;
+}
+
+/* Lors du survol de la souris il y a l'effet 3D */
+.titre-du-site:hover,
+.titre-du-site:focus-visible {
+    transform: rotateY(23deg) rotateX(9deg); /* rotation verticale : 23°, horizontale : 9° */
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3); /* ombre pour l'effet de profondeur */
+}
+
+
+body > header a {
+    color: white;
+    text-decoration: none; /* enlève le style par défaut des liens */
+}
+
+/* Effet couleur : au survol des liens du menu */
+
+body > header nav a {
+    transition: color 0.3s ease;
+}
+
+body > header nav a:hover,
+body > header nav a:focus-visible {
+    color: #F7F0C8;
 }
 
 body > header a {
@@ -122,6 +160,7 @@ h1{
 .texte-introduction {
     flex: 1; /* le texte prend l'espace restant */
     min-width: 250px; /* évite une colonne de texte trop étroite */
+    perspective: 650px; /* ajoute un effet de profondeur pour le titre 3D */
 }
 
 .introduction img {
@@ -133,13 +172,28 @@ h1{
 
 }
 
+/* CSS 3D - Animation du titre de la page d'accueil */
+
 #titre-introduction {
-    color:#0D2818;
+    color: #0D2818;
     font-style: normal;
     font-weight: 900;
     text-align: left;
     margin-bottom: 1rem;
     font-size: 44px;
+
+    /* Point de rotation au centre */
+    transform-origin: center;
+
+    /* Transition identique au logo */
+    transition: transform 0.6s ease,
+                text-shadow 0.6s ease;
+}
+
+/* Animation 3D au survol */
+#titre-introduction:hover {
+    transform: rotateY(23deg) rotateX(9deg);
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
 }
 
 .introduction p {
@@ -190,13 +244,28 @@ h1{
     flex-basis: 100%; /* couverture de toute la largeur de la page */
 }
 
-.carte-article img {
+/* CSS 2D - léger zoom des images des articles */
+
+.carte-article > a[data-lightbox] { /*Vise seulement les liens Lightbox des articles */
+    display: block;
+    overflow: hidden; /* sert à cacher l'image qui dépasse pendant le zoom */
+    border-radius: 12px;
+}
+
+.carte-article > a[data-lightbox] > img {
     display: block;
     width: 100%;
-    height: 25rem; /* plus de hauteur pour voir davantage l'image */
-    object-fit: cover; /* recadrée sans déformation */
-    object-position: center 30%; /* cadrage un peu au-dessus du centre, pour garder les visages */
-    border-radius: 12px; /* images arrondies comme les articles */
+    height: 25rem;
+    object-fit: cover; /* vise à ramplir le cadre sans déformer l'image */
+    object-position: center 30%;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+/* zoom au survol */
+.carte-article > a[data-lightbox]:hover img,
+.carte-article > a[data-lightbox]:focus-visible img {
+    transform: scale(1.05); /* agrandit de 5% */
 }
 
 .contenu-article {
@@ -390,6 +459,16 @@ h1{
 }
 
 /* Footer */
+/* Effet color : idem que pour les liens du menu */
+
+.colonne-footer a {
+    transition: color 0.3s ease;
+}
+
+.colonne-footer a:hover,
+.colonne-footer a:focus-visible {
+    color: #F7F0C8;
+}
 
 footer {
     background-color: #2e2e2e;
@@ -570,8 +649,8 @@ body.mode-sombre .connexion button {
         border-bottom: 1px solid #0D2818; /* fine séparation entre les articles */
     }
 
-    .carte-article img {
-        height: auto; /* image entière, sans recadrage, sur petit écran */
+    .carte-article > a[data-lightbox] > img { /* Sur mobile, l'image reste bien proportionnée */
+    height: auto;
     }
 
     .introduction img {
