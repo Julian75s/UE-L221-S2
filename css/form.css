@@ -1,0 +1,220 @@
+/* UE L221 - Semaine 3 : formulaire Sylva Family */
+
+/* Palette locale et présentation générale */
+.form_UE_L221 {
+    --fond-form: #ffffff;
+    --fond-champ: #f7fbf5;
+    --texte-form: #263e2c;
+    --bord-form: #b9cdb8;
+    --accent-form: #315b3c;
+    --focus-form: #527c49;
+    max-width: 960px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+    color: var(--texte-form);
+    text-align: left;
+    scroll-margin-top: 24px;
+}
+
+/* Adaptation au mode sombre déjà présent sur le blog */
+body.mode-sombre .form_UE_L221 {
+    --fond-form: #20382a;
+    --fond-champ: #16291e;
+    --texte-form: #edf7e9;
+    --bord-form: #78957b;
+    --accent-form: #315b3c;
+    --focus-form: #a3d395;
+    color-scheme: dark;
+}
+
+/* Titre et animation discrète du trait décoratif */
+.form_UE_L221 .inscription-entete {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.form_UE_L221 .inscription-entete h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 12px;
+}
+.form_UE_L221 .inscription-entete h2::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 12px auto;
+    border-radius: 3px;
+    background: var(--focus-form);
+    transition: transform 0.4s ease;
+}
+.form_UE_L221 .inscription-entete:hover h2::after {
+    transform: scaleX(1.7);
+}
+
+/* Carte du formulaire et apparition progressive */
+.form_UE_L221 .inscription-formulaire {
+    background: var(--fond-form);
+    border: 1px solid var(--bord-form);
+    border-radius: 18px;
+    padding: clamp(16px, 4vw, 32px);
+    box-shadow: 0 6px 20px rgba(13, 40, 24, 0.09);
+    animation: inscription-apparition 0.65s ease both;
+    transition: box-shadow 0.3s ease;
+}
+.form_UE_L221 .inscription-formulaire:focus-within {
+    box-shadow: 0 10px 26px rgba(13, 40, 24, 0.17);
+}
+@keyframes inscription-apparition {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.form_UE_L221 .inscription-note {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+.form_UE_L221 fieldset {
+    min-width: 0;
+    border: 1px solid var(--bord-form);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 22px;
+}
+.form_UE_L221 legend {
+    padding: 0 8px;
+    font-weight: 700;
+}
+
+/* Mise en page sur deux colonnes grâce à CSS Grid */
+.form_UE_L221 .inscription-grille {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.form_UE_L221 .inscription-large {
+    grid-column: 1 / -1;
+}
+.form_UE_L221 .inscription-champ {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+.form_UE_L221 .inscription-champ label {
+    font-weight: 600;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+.form_UE_L221 .inscription-champ:focus-within label {
+    color: var(--focus-form);
+    transform: translateX(3px);
+}
+
+/* Champs : transition de bordure et halo au focus */
+.form_UE_L221 .inscription-champ input,
+.form_UE_L221 .inscription-champ select,
+.form_UE_L221 .inscription-champ textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 12px;
+    border: 1px solid var(--bord-form);
+    border-radius: 8px;
+    background: var(--fond-champ);
+    color: var(--texte-form);
+    font: inherit;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+.form_UE_L221 .inscription-champ textarea {
+    resize: vertical;
+}
+.form_UE_L221 .inscription-champ :is(input, select, textarea):hover {
+    border-color: var(--focus-form);
+}
+.form_UE_L221 .inscription-champ :is(input, select, textarea):focus {
+    outline: 2px solid var(--focus-form);
+    outline-offset: 2px;
+    background: var(--fond-form);
+    box-shadow: 0 3px 10px rgba(49, 91, 60, 0.13);
+}
+/* Indication des erreurs après interaction, sans colorer les champs vides au chargement */
+.form_UE_L221 .inscription-champ :user-invalid {
+    border-color: #c65b49;
+}
+
+/* Case RGPD et animation légère lorsqu'elle est cochée */
+.form_UE_L221 .inscription-rgpd {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+.form_UE_L221 .inscription-rgpd input {
+    width: 19px;
+    height: 19px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--accent-form);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.form_UE_L221 .inscription-rgpd input:checked {
+    transform: scale(1.12);
+}
+.form_UE_L221 .inscription-rgpd label {
+    cursor: pointer;
+}
+
+/* Bouton d'envoi : dégradé, élévation et retour au clic */
+.form_UE_L221 .inscription-envoi {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(115deg, #284b32, #426a42);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    white-space: normal;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.form_UE_L221 .inscription-envoi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(13, 40, 24, 0.24);
+    filter: brightness(1.08);
+}
+.form_UE_L221 .inscription-envoi:active {
+    transform: translateY(0) scale(0.99);
+}
+.form_UE_L221 :is(input, button, select, textarea):focus-visible {
+    outline: 2px solid var(--focus-form);
+    outline-offset: 3px;
+}
+
+/* Réservation de l'espace vidéo : aucun espace vide avant le travail JS */
+.form_UE_L221 .inscription-interactive {
+    text-align: center;
+}
+.form_UE_L221 .inscription-interactive:has(button, video) {
+    margin-top: 24px;
+}
+
+/* Adaptation aux petits écrans */
+@media (max-width: 600px) {
+    .form_UE_L221 .inscription-grille {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .form_UE_L221 fieldset {
+        padding: 12px;
+    }
+}
+
+/* Respect des préférences d'accessibilité liées aux mouvements */
+@media (prefers-reduced-motion: reduce) {
+    .form_UE_L221,
+    .form_UE_L221 *,
+    .form_UE_L221 *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
