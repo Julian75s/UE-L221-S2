@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/custom_L221.css">
+    <!-- Intégration du CSS semaine 3 pour le formulaire -->
+    <link rel="stylesheet" href="css/form.css">
     <!--Intégration du CSS utile à notre effet lightbox sur les images des articles-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
@@ -31,6 +33,8 @@
                 <li>
                     <a href="about.html">À propos</a>
                 </li>
+                <li>
+                    <a href="index.html#inscription-evenements">Nos évènements</a>
                 <li>
                     <a href="login.html">Connexion</a>
                 </li>
@@ -281,6 +285,98 @@
             </article>
         </section>
     </main>
+        <!-- UE L221 - Semaine 3 : formulaire d'inscription aux événements -->
+<section class="form_UE_L221" id="inscription-evenements" aria-labelledby="titre-inscription">
+    <div class="inscription-entete">
+        <h2 id="titre-inscription">Partageons une nouvelle aventure</h2>
+        <p>Inscrivez-vous à une prochaine sortie en forêt avec Sylva Family.</p>
+    </div>
+
+    <!-- Formulaire de démonstration : aucun service de traitement connecté -->
+    <form class="inscription-formulaire" action="#inscription-evenements" method="post">
+        <p class="inscription-note">* Champs obligatoires. Formulaire de démonstration : aucune inscription réelle.</p>
+
+        <!-- Coordonnées du participant -->
+        <fieldset>
+            <legend>Vos coordonnées</legend>
+            <div class="inscription-grille">
+                <div class="inscription-champ">
+                    <label for="event-nom">Nom *</label>
+                    <input type="text" id="event-nom" name="nom" autocomplete="family-name" required>
+                </div>
+
+                <div class="inscription-champ">
+                    <label for="event-prenom">Prénom *</label>
+                    <input type="text" id="event-prenom" name="prenom" autocomplete="given-name" required>
+                </div>
+
+                <div class="inscription-champ">
+                    <label for="event-email">Adresse e-mail *</label>
+                    <input type="email" id="event-email" name="email" autocomplete="email" required>
+                </div>
+
+                <div class="inscription-champ">
+                    <label for="event-tel">Téléphone *</label>
+                    <input type="tel" id="event-tel" name="telephone" autocomplete="tel" required>
+                </div>
+
+                <div class="inscription-champ inscription-large">
+                    <label for="event-client">Numéro client (facultatif)</label>
+                    <input type="text" id="event-client" name="numero_client">
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Choix de la sortie et nombre de participants -->
+        <fieldset>
+            <legend>Votre prochaine aventure</legend>
+            <div class="inscription-grille">
+                <div class="inscription-champ">
+                    <label for="event-date">Date de l'événement *</label>
+                    <select id="event-date" name="date_evenement" required>
+                        <option value="" selected disabled>Choisir un week-end</option>
+                        <option value="2027-01-09">9 et 10 janvier 2027</option>
+                        <option value="2027-01-16">16 et 17 janvier 2027</option>
+                        <option value="2027-01-23">23 et 24 janvier 2027</option>
+                        <option value="2027-01-30">30 et 31 janvier 2027</option>
+                    </select>
+                </div>
+
+                <div class="inscription-champ">
+                    <label for="event-participants">Nombre de participants *</label>
+                    <select id="event-participants" name="participants" required>
+                        <option value="" selected disabled>Choisir un nombre</option>
+                        <option value="1">1 participant</option>
+                        <option value="2">2 participants</option>
+                        <option value="3">3 participants</option>
+                        <option value="4">4 participants</option>
+                        <option value="5">5 participants</option>
+                        <option value="6">6 participants</option>
+                    </select>
+                </div>
+
+                <div class="inscription-champ inscription-large">
+                    <label for="event-message">Message à l'équipe (facultatif)</label>
+                    <textarea id="event-message" name="message" rows="4" placeholder="Une question, une précision..." maxlength="1000"></textarea>
+                </div>
+            </div>
+        </fieldset>
+        <!-- Consentement : exemple pédagogique, à compléter avant mise en production -->
+        <div class="inscription-rgpd">
+            <input type="checkbox" id="event-rgpd" name="rgpd" value="oui" required>
+            <label for="event-rgpd">J'accepte l'utilisation de mes données pour la gestion de mon inscription. *</label>
+        </div>
+
+        <!-- Bouton du formulaire, distinct des boutons vidéo créés en JS -->
+        <input class="inscription-envoi" type="submit" value="Envoyer ma demande d'inscription">
+    </form>
+
+    <!-- Conteneurs vides : boutons et vidéo à créer exclusivement dans form.js -->
+    <div id="inscription-interactive" class="inscription-interactive">
+        <div id="inscription-video-boutons"></div>
+        <div id="inscription-video-conteneur"></div>
+    </div>
+</section>
     <section class="newsletter">
         <h2>Restons en contact !</h2>
         <p>Reçois nos nouveaux articles et nos dernières idées de sorties en forêt par e-mail.</p>
@@ -321,6 +417,8 @@
                     <li>
                         <a href="about.html">À propos</a>
                     </li>
+                    <li>
+                        <a href="index.html#inscription-evenements">Nos évènements</a>
                     <li>
                         <a href="login.html">Connexion</a>
                     </li>
