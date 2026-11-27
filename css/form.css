@@ -1,6 +1,7 @@
-/* UE L221 - Semaine 3 : formulaire Sylva Family */
+/*      Formulaire      */
+/* -------------------- */
 
-/* Palette locale et présentation générale */
+/* Présentation générale */
 .form_UE_L221 {
     --fond-form: #ffffff;
     --fond-champ: #f7fbf5;
@@ -16,7 +17,7 @@
     scroll-margin-top: 24px;
 }
 
-/* Adaptation au mode sombre déjà présent sur le blog */
+/* adaptation au mode sombre */
 body.mode-sombre .form_UE_L221 {
     --fond-form: #20382a;
     --fond-champ: #16291e;
@@ -27,7 +28,7 @@ body.mode-sombre .form_UE_L221 {
     color-scheme: dark;
 }
 
-/* Titre et animation discrète du trait décoratif */
+/* Titre et animation discrète du trait */
 .form_UE_L221 .inscription-entete {
     text-align: center;
     margin-bottom: 24px;
@@ -83,7 +84,7 @@ body.mode-sombre .form_UE_L221 {
     font-weight: 700;
 }
 
-/* Mise en page sur deux colonnes grâce à CSS Grid */
+/* Mise en page sur deux colonnes grâce à CSS grid */
 .form_UE_L221 .inscription-grille {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -138,7 +139,7 @@ body.mode-sombre .form_UE_L221 {
     border-color: #c65b49;
 }
 
-/* Case RGPD et animation légère lorsqu'elle est cochée */
+/* Case RGPD et animation légère lorsqu'on la coche */
 .form_UE_L221 .inscription-rgpd {
     display: flex;
     align-items: flex-start;
@@ -190,16 +191,12 @@ body.mode-sombre .form_UE_L221 {
     outline-offset: 3px;
 }
 
-/* Réservation de l'espace vidéo : aucun espace vide avant le travail JS */
-.form_UE_L221 .inscription-interactive {
-    text-align: center;
-}
-.form_UE_L221 .inscription-interactive:has(button, video) {
-    margin-top: 24px;
-}
 
 /* Adaptation aux petits écrans */
 @media (max-width: 600px) {
+    .form_UE_L221 {
+        margin-top: 32px; /* ajoute de l'espace au-dessus de la section sur mobile */
+    }
     .form_UE_L221 .inscription-grille {
         grid-template-columns: minmax(0, 1fr);
     }
@@ -217,4 +214,59 @@ body.mode-sombre .form_UE_L221 {
         transition: none !important;
         transform: none !important;
     }
+}
+
+/* Bouton permettant d'afficher la vidéo au dessus du formulaire */
+/* ------------------------------------------------------------- */
+
+#video {
+    text-align: center;             /* centre les éléments dans la zone */
+}
+
+#video video {                  /* cible uniquement l'objet vidéo créé par le js */
+    display: block;             /* la vidéo occupe sa propre ligne (le bouton passe en dessous) */
+    margin: 0 auto 20px;        /* centre la vidéo et ajoute 20 px sous elle */
+    max-width: 100%;            /* évite que la vidéo dépasse sur petit écran */
+    border-radius: 12px;        /* Arrondit les coins de la vidéo */
+    box-shadow: 0 6px 16px rgba(13, 40, 24, 0.2);           /* Ajoute une ombre legere à la video */
+    animation: apparition-video 0.4s ease;                  /* Anime l'aparition de la vidéo */
+}
+
+@keyframes apparition-video {   /* fait apparaitre la vidéo avec une fondue rapide */
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);        /* commence invisible et légèrement plus bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);           /* arrive à sa position normale */
+    }
+}
+
+.bouton-video {
+    min-height: 56px;
+    max-width: 100%;
+    margin-bottom: 24px;
+    padding: 14px 28px;
+    border: 0;
+    border-radius: 12px;                            /* arrondi les bords du bouton */
+    background: #315b3c;                            /* bouton de couleur vert */
+    color: white;
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;                                /* Affiche une main au survol du bouton */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;    /* Lors du survol ou du clic, anime le déplacement, l'ombre et la luminosité du bouton pendant 0,2 seconde pour rendre les effets plus fluides */
+}
+
+
+.bouton-video:hover {                               /* effet "légère élévation au survol" */
+    transform: translateY(-2px);                    
+    box-shadow: 0 6px 14px rgba(13, 40, 24, 0.25);
+    filter: brightness(1.1);
+}
+
+.bouton-video:active {                              /* effet de bouton "enfoncé" lors du clic */
+    transform: translateY(0);
 }
